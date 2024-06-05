@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f6e8; /* Light green background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .weather-container {
+            background-color: #ffffff; /* White background */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: center;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #ffb6c1; /* Light pink heading */
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #cccccc; /* Light gray border */
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box; /* Include padding and border in width calculation */
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffb6c1; /* Light pink button */
+            color: #ffffff; /* White text */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        button:hover {
+            background-color: #ffc0cb; /* Light pink on hover */
+        }
+
+        .weather-info {
+            margin-top: 20px;
+        }
+
+        p {
+            color: #556b2f; /* Dark olive text */
+            margin-bottom: 10px;
+        }
+
+        img {
+            max-width: 100px; /* Limiting the width of the weather icon */
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-container">
+        <h1>Weather App</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Enter city name">
+            <button type="submit">Check Weather</button>
+        </form>
+        {% if weather_data %}
+            {% if weather_data.error %}
+                <p style="color: #ff0000;">{{ weather_data.error }}</p> <!-- Red error message -->
+            {% else %}
+                <h2>{{ weather_data.city }}</h2>
+                <p>Temperature: <span style="color: #006400;">{{ weather_data.temperature }}°C</span></p> <!-- Dark green temperature -->
+                <p>Weather: {{ weather_data.description }}</p>
+                <img src="http://openweathermap.org/img/wn/{{ weather_data.icon }}.png" alt="Weather icon">
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
