@@ -1,4 +1,6 @@
-This Weather App is built using Django and provides real-time weather information for city worldwide. 
+Weather App is a Django-based web application that provides users with real-time weather information for any location worldwide.
+With a clean and intuitive interface, users can easily search for cities and view current weather conditions, including temperature, humidity, wind speed, and more.
+
 
 
 Step 1 - github with error in views.py code
