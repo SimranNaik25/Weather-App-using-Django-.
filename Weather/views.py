@@ -25,4 +25,4 @@ def get_weather_data(city):
         }
     else:
         weather_data = {'error': 'City not found'}
-    return weather_data
+    
