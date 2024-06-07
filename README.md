@@ -1,3 +1,6 @@
+This Weather App is built using Django and provides real-time weather information for city worldwide.
+
+
 Step 1 - github with error in views.py code
 
 
